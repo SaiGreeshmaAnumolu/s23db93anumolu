@@ -1,8 +1,20 @@
 var cap = require('../models/cap');
+
 // List of all cap
-exports.cap_list = function(req, res) {
+// List of all cap
+exports.cap_list = async function(req, res) {
+    try{
+    thecap = await cap.find();
+    res.send(thecap);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+   };
+/*exports.cap_list = function(req, res) {
  res.send('NOT IMPLEMENTED: cap list');
-};
+};*/
 // for a specific cap.
 exports.cap_detail = function(req, res) {
  res.send('NOT IMPLEMENTED: cap detail: ' + req.params.id);
