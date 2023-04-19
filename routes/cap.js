@@ -10,3 +10,5 @@ router.get('/detail', cap_controlers.cap_view_one_Page);
 module.exports = router;
 /* GET create cap page */
 router.get('/create', cap_controlers.cap_create_Page);
+/* GET create update page */
+router.get('/update', cap_controlers.cap_update_Page);
