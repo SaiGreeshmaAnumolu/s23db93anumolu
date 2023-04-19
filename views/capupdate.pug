@@ -1,0 +1,42 @@
+extends layout
+block content
+ h1= title
+ if (toShow == null)
+  h2 No instance to update
+ else
+  - let capid = toShow._id
+  - let brand = toShow.brand
+  - let color = toShow.color
+  - let price = toShow.price
+  div.row(class='mb-2')
+   div.mr-1 ID is
+   div #{capid}
+  - let actionid = "/resource/cap/" + capid
+  form(id='capForm', action= actionid, method="PUT")
+   div.form-group
+     label.capAttr(for='brand') cap brand
+     input#brand(type='String', name='brand', value= brand )
+   div.form-group
+     label.capAttr(for='color') cap color
+     input#color(type='String', name='color', value= color )
+   div.form-group
+     label.capAttr(for='price') cap price
+     input#price(type='number', name='price', value= price )
+   input(type="submit")
+  script.
+   document.forms['capForm'].addEventListener('submit', (event) => {
+    event.preventDefault();
+    // TODO do something here to show user that form is being submitted
+    fetch(event.target.action, {
+     method: 'PUT',
+     body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+    }).then((resp) => {
+     return resp.json(); // or resp.text() or whatever the server sends
+    }).then((body) => {
+     alert("Update succeded")
+     // TODO handle body
+    }).catch((error) => {
+     // TODO handle error
+     alert("Update failed " + error )
+    });
+   });
