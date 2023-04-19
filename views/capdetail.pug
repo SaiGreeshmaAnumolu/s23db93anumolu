@@ -1,0 +1,23 @@
+extends layout
+block content
+ h1= title
+ if (toShow == null)
+  h2 No instance to detail
+ else
+  - let capid = toShow._id
+  - let brand = toShow.brand
+  - let color = toShow.color
+  - let price = toShow.price
+  div
+    div.row
+     div(class='capAttr mr-3') cap ID is:
+     div #{capid}
+    div.row
+     div(class='capAttr mr-3') cap Type is:
+     div #{brand}
+    div.row
+     div(class='capAttr mr-3') cap color is:
+     div #{color}
+    div.row
+     div(class='capAttr mr-3') cap price is:
+     div #{price}
