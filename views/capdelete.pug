@@ -1,0 +1,49 @@
+extends layout
+block content
+ h1= title
+ if (toShow == null)
+  h2 No instance to delete
+ else
+  - let capid = toShow._id
+  - let brand = toShow.brand
+  - let color = toShow.color
+  - let price = toShow.price
+  - let actionid = "/resource/cap/" + capid
+  script let actionid = "#{actionid}"
+  div
+   div.row
+    div(class='capAttr mr-3') cap ID is:
+    div #{capid}
+   div.row
+    div(class='capAttr mr-3') cap Brand is:
+    div #{brand}
+   div.row
+    div(class='capAttr mr-3') cap Color is:
+    div #{color}
+   div.row
+    div(class='capAttr mr-3') cap Price is:
+    div #{price}
+  button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+  button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+ script.
+  function cancel() {
+   // Go back to the home page for the cap collection
+   window.location.href='/cap'
+  }
+ script.
+  function deleteOnid() {
+   console.log("starting delete")
+   // delete first
+   fetch(actionid, {
+    method: 'DELETE' // Don't need a body for the delete
+   }).then((resp) => {
+    return resp.json(); // or resp.text() or whatever the server sends
+   }).then((body) => {
+    alert("Delete succeded")
+    window.location.href='/cap'
+    // TODO handle body
+   }).catch((error) => {
+    // TODO handle error
+    alert("Delete failed " + error )
+   });
+  }

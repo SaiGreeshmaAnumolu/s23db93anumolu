@@ -12,3 +12,5 @@ module.exports = router;
 router.get('/create', cap_controlers.cap_create_Page);
 /* GET create update page */
 router.get('/update', cap_controlers.cap_update_Page);
+/* GET delete cap page */
+router.get('/delete', cap_controlers.cap_delete_Page);

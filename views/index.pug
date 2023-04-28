@@ -1,19 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p I have a guniess record
-
-  button(type="button", class="btn btn-success", onclick ="doReduce()") Press Me
-  br
-  div#reduce Reduce the value
-
-  script.  
-    var count = 20
-    var change = -1
-    function doReduce() {
-      count += change;
-      change--;
-       document.getElementById("reduce").innerHTML = "Count " + count + " with change " + change;
-     }
-  a(href="cap") Search Results
+ if (!user)
+   a(href="/login") Login
+   br
+   a(href="/register") Register
+ if (user)
+   p You are currently logged in as #{user.username}
+   a(href="/cap") Take me to cap
+   br
+   a(href="/logout") Logout

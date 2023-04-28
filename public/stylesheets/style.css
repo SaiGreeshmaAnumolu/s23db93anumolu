@@ -1,10 +1,11 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px ;
+  font-family:"cursive", Times, serif;
 }
 .capAttr {
-  background-color: aquamarine;
-  width: 120px;
+  background-color: rgb(255, 144, 127);
+  width: 150px;
  }
 a {
   color: #00B7FF;
