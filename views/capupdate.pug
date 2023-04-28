@@ -21,7 +21,7 @@ block content
      input#color(type='String', name='color', value= color )
    div.form-group
      label.capAttr(for='price') cap price
-     input#price(type='number', name='price', value= price )
+     input#price(type='number', name='price', value= price, min=10, max=2000 )
    input(type="submit")
   script.
    document.forms['capForm'].addEventListener('submit', (event) => {
